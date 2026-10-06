@@ -1,18 +1,30 @@
 import { useEffect, useState } from 'react';
-import { getPokemon } from '../pokemonAPI';
+import { Link } from 'react-router-dom';
+import { getAllPokemon, type Pokemon } from '../pokemonAPI';
 
-// Temporary test: fetch Pikachu and show its name.
+// List of the first 151 Pokémon.
 function ListView() {
-    // Memory for the name; starts as "Loading...".
-    const [name, setName] = useState('Loading...');
+    const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
-    // After the page draws, fetch #25 and store its name.
+    // Fetch the whole list once.
     useEffect(() => {
-        getPokemon('25').then(pokemon => setName(pokemon.name));
+        getAllPokemon().then(setPokemonList);
     }, []);
 
+    if (pokemonList.length === 0) {
+        return <p>Loading...</p>;
+    }
+
     return (
-        <h2>{name}</h2>
+        <ul>
+            {pokemonList.map(pokemon => (
+                <li key={pokemon.id}>
+                    <Link to={`/pokemon/${pokemon.id}`}>
+                        #{pokemon.id} {pokemon.name}
+                    </Link>
+                </li>
+            ))}
+        </ul>
     );
 }
 
