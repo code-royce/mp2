@@ -8,7 +8,12 @@ export interface Pokemon {
     height: number;
     id: number;
     name: string;
-    sprites: { other: { 'official-artwork': { front_default: string } } };
+    sprites: {
+        other: {
+            'official-artwork': { front_default: string },
+            'showdown': { front_default: string }
+        }
+    };
     stats: { base_stat: number; stat: { name: string } }[];
     types: { type: { name: string } }[];
     weight: number;
