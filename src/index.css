@@ -1,1 +1,17 @@
+.detail {
+    text-align: center;
+}
 
+.detail h2 {
+    text-transform: capitalize;
+}
+
+.detail img {
+    height: 250px;
+    width: 250px;
+}
+
+.detail ul {
+    list-style: none;
+    padding: 0;
+}
