@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { getPokemon, type Pokemon } from '../pokemonAPI';
+import { useParams, Link } from 'react-router-dom';
+import { getPokemon, type Pokemon, POKEMON_COUNT } from '../pokemonAPI';
 
 // Single Pokémon view.
 function DetailView() {
@@ -22,6 +22,16 @@ function DetailView() {
     const image = pokemon.sprites.other['official-artwork'].front_default;
     const types = pokemon.types.map(t => t.type.name).join(', ');
 
+    // Cycle through from beginning to end of list.
+    let prevId = pokemon.id - 1;
+    let nextId = pokemon.id + 1;
+    if (prevId === 0) {
+        prevId = POKEMON_COUNT;
+    }
+    if (nextId === POKEMON_COUNT + 1) {
+        nextId = 1;
+    }
+
     return (
         <div className="detail">
             <h2>#{pokemon.id} {pokemon.name}</h2>
@@ -33,6 +43,8 @@ function DetailView() {
                 <li>Height: {pokemon.height / 10} m</li>
                 <li>Weight: {pokemon.weight / 10} kg</li>
             </ul>
+            <Link to={`/pokemon/${prevId}`}>Previous</Link>
+            <Link to={`/pokemon/${nextId}`}>Next</Link>
         </div>
     );
 }

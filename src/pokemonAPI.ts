@@ -22,7 +22,7 @@ export async function getPokemon(id: string): Promise<Pokemon> {
     return response.data;
 }
 
-const POKEMON_COUNT = 151;
+export const POKEMON_COUNT = 151;
 
 // Saved after the first successful fetch.
 let allPokemon: Pokemon[] | null = null;
