@@ -34,6 +34,9 @@ header {
     display: flex;
     justify-content: space-between;
     padding: 0 var(--std-pad);
+    position: sticky;
+    top: 0;
+    z-index: 5;
 
     a {
         color: var(--header-txt);
