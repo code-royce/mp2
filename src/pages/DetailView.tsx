@@ -7,11 +7,15 @@ function DetailView() {
     // Read the id from the /pokemon/:id route.
     const { id } = useParams();
     const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+    const [shiny, setShiny] = useState(false);
 
-    // Fetch whenever the id in the URL changes.
+    // Fetch whenever the id in the URL changes, and go back to the official artwork.
     useEffect(() => {
         if (id) {
-            getPokemon(id).then(setPokemon);
+            getPokemon(id).then(p => {
+                setPokemon(p);
+                setShiny(false);
+            });
         }
     }, [id]);
 
@@ -19,8 +23,17 @@ function DetailView() {
         return <p>Loading...</p>;
     }
 
-    const image = pokemon.sprites.other['official-artwork'].front_default;
+    const image = shiny
+        ? pokemon.sprites.other.showdown.front_shiny
+        : pokemon.sprites.other['official-artwork'].front_default;
     const types = pokemon.types.map(t => t.type.name).join(', ');
+    const cry = pokemon.cries.latest;
+
+    // Switch between the two images and play the cry on every click.
+    function handleImageClick() {
+        setShiny(!shiny);
+        new Audio(cry).play();
+    }
 
     // Cycle through from beginning to end of list.
     let prevId = pokemon.id - 1;
@@ -35,7 +48,7 @@ function DetailView() {
     return (
         <div className="detail">
             <h2>#{pokemon.id} {pokemon.name}</h2>
-            <img src={image} alt={pokemon.name} />
+            <img src={image} alt={pokemon.name} onClick={handleImageClick} />
 
             {/* Height and weight come back in decimeters and hectograms. */}
             <ul>

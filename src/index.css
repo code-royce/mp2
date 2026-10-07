@@ -153,7 +153,10 @@ button {
     }
 
     img {
+        cursor: pointer;
         height: 250px;
+        image-rendering: pixelated;
+        object-fit: contain;
         width: 250px;
     }
 

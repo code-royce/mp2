@@ -11,7 +11,7 @@ export interface Pokemon {
     sprites: {
         other: {
             'official-artwork': { front_default: string },
-            'showdown': { front_default: string }
+            'showdown': { front_default: string; front_shiny: string }
         },
         versions: {
             'generation-i': {
