@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import DetailView from './pages/DetailView';
 import GalleryView from './pages/GalleryView';
 import ListView from './pages/ListView';
@@ -12,8 +12,8 @@ function App() {
 
                 {/* Site navigation. */}
                 <nav>
-                    <Link to="/">List</Link>
-                    <Link to="/gallery">Gallery</Link>
+                    <NavLink to="/" end>List</NavLink>
+                    <NavLink to="/gallery">Gallery</NavLink>
                 </nav>
             </header>
 

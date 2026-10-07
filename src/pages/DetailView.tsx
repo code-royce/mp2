@@ -43,8 +43,10 @@ function DetailView() {
                 <li>Height: {pokemon.height / 10} m</li>
                 <li>Weight: {pokemon.weight / 10} kg</li>
             </ul>
-            <Link to={`/pokemon/${prevId}`}>Previous</Link>
-            <Link to={`/pokemon/${nextId}`}>Next</Link>
+            <div className="detail-nav">
+                <Link to={`/pokemon/${prevId}`}>Previous</Link>
+                <Link to={`/pokemon/${nextId}`}>Next</Link>
+            </div>
         </div>
     );
 }

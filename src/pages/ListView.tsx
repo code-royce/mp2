@@ -65,7 +65,7 @@ function ListView() {
             <button className="order" onClick={() => setAscending(!ascending)}>
                 {ascending ? 'Ascending' : 'Descending'}
             </button>
-            <ul>
+            <ul className="pokemon-list">
                 {shown.map(pokemon => (
                     <li key={pokemon.id}>
                         <Link to={`/pokemon/${pokemon.id}`}>

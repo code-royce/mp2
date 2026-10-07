@@ -1,17 +1,140 @@
-.detail {
-    text-align: center;
+/* Color Palette */
+:root {
+    --charcoal:  #1E1F24;
+    --off-white: #F4F4F6;
+    --poke-red:  #E3350D;
+    --white:     #FFFFFF;
+
+    /* Color Scheme */
+    --accent: var(--poke-red);
+    --bg: var(--off-white);
+    --card: var(--white);
+    --header-bg: var(--poke-red);
+    --header-txt: var(--white);
+    --txt: var(--charcoal);
+
+    --std-pad: 20px;
 }
 
-.detail h2 {
-    text-transform: capitalize;
+body {
+    background-color: var(--bg);
+    color: var(--txt);
+    font-family: system-ui, sans-serif;
+    margin: 0;
 }
 
-.detail img {
-    height: 250px;
-    width: 250px;
+a {
+    color: var(--txt);
 }
 
-.detail ul {
+header {
+    align-items: center;
+    background-color: var(--header-bg);
+    color: var(--header-txt);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 var(--std-pad);
+
+    a {
+        color: var(--header-txt);
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    a.active {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+nav {
+    display: flex;
+    gap: var(--std-pad);
+}
+
+main {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: var(--std-pad);
+}
+
+/* List View */
+.order,
+.search,
+.sort {
+    margin-right: 8px;
+}
+
+.pokemon-list {
     list-style: none;
     padding: 0;
+
+    a {
+        display: inline-block;
+        padding: 6px 0;
+        text-decoration: none;
+        text-transform: capitalize;
+    }
+
+    a:hover {
+        color: var(--accent);
+    }
+}
+
+/* Gallery View */
+.type-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: var(--std-pad);
+
+    label {
+        background-color: var(--card);
+        border-radius: 999px;
+        padding: 4px 12px;
+        text-transform: capitalize;
+    }
+}
+
+/* Three columns so the starter evolutions line up in rows. */
+.gallery {
+    align-items: end;
+    display: grid;
+    gap: var(--std-pad);
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+/* Detail View */
+.detail {
+    background-color: var(--card);
+    border-radius: 8px;
+    margin: 0 auto;
+    max-width: 400px;
+    padding: var(--std-pad);
+    text-align: center;
+
+    h2 {
+        text-transform: capitalize;
+    }
+
+    img {
+        height: 250px;
+        width: 250px;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+}
+
+.detail-nav {
+    display: flex;
+    justify-content: space-between;
 }
