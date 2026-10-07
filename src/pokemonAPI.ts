@@ -12,6 +12,11 @@ export interface Pokemon {
         other: {
             'official-artwork': { front_default: string },
             'showdown': { front_default: string }
+        },
+        versions: {
+            'generation-i': {
+                'red-blue': { front_transparent: string }
+            }
         }
     };
     stats: { base_stat: number; stat: { name: string } }[];

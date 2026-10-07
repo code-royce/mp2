@@ -61,6 +61,21 @@ main {
     padding: var(--std-pad);
 }
 
+/* Form Controls */
+button,
+input,
+select {
+    background-color: var(--card);
+    border: 1px solid var(--txt);
+    border-radius: 6px;
+    font: inherit;
+    padding: 6px 10px;
+}
+
+button {
+    cursor: pointer;
+}
+
 /* List View */
 .order,
 .search,
@@ -73,14 +88,23 @@ main {
     padding: 0;
 
     a {
-        display: inline-block;
-        padding: 6px 0;
+        align-items: center;
+        display: inline-flex;
+        gap: 8px;
+        padding: 2px 0;
         text-decoration: none;
         text-transform: capitalize;
     }
 
     a:hover {
         color: var(--accent);
+    }
+
+    img {
+        height: 96px;
+        image-rendering: pixelated;
+        margin: -16px 0;
+        width: 96px;
     }
 }
 
@@ -104,10 +128,14 @@ main {
     align-items: end;
     display: grid;
     gap: var(--std-pad);
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     justify-items: center;
     margin: 0 auto;
     max-width: 480px;
+
+    img {
+        max-width: 100%;
+    }
 }
 
 /* Detail View */
@@ -117,6 +145,7 @@ main {
     margin: 0 auto;
     max-width: 400px;
     padding: var(--std-pad);
+    position: relative;
     text-align: center;
 
     h2 {
@@ -134,7 +163,23 @@ main {
     }
 }
 
-.detail-nav {
-    display: flex;
-    justify-content: space-between;
+.arrow {
+    color: var(--txt);
+    font-size: 1.5rem;
+    position: absolute;
+    text-decoration: none;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.arrow:hover {
+    color: var(--accent);
+}
+
+.prev {
+    left: var(--std-pad);
+}
+
+.next {
+    right: var(--std-pad);
 }

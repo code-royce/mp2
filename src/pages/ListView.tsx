@@ -69,6 +69,10 @@ function ListView() {
                 {shown.map(pokemon => (
                     <li key={pokemon.id}>
                         <Link to={`/pokemon/${pokemon.id}`}>
+                            <img
+                                src={pokemon.sprites.versions['generation-i']['red-blue'].front_transparent}
+                                alt=""
+                            />
                             #{pokemon.id} {pokemon.name}
                         </Link>
                     </li>
